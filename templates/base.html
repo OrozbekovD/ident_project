@@ -16,12 +16,14 @@
         <div class="container">
             <div class="inner">
                 <div class="tels">
-                    <a href="tel:+996 999 594 321," class="tel header-font">+996 999 594 321,</a>
-                    <a href="tel:+996 999 594 321," class="tel header-font">+996 999 594 321,</a>
-                    <a href="tel:+996 999 594 321," class="tel header-font">+996 999 594 321,</a>
+                    {% for i in phones %}
+                    <a href="tel:+996 999 594 321" class="tel header-font">{{ i.number }}</a>
+{#                    <a href="tel:+996 999 594 321," class="tel header-font">+996 999 594 321,</a>#}
+{#                    <a href="tel:+996 999 594 321," class="tel header-font">+996 999 594 321,</a>#}
+                    {% endfor %}
                 </div>
                 <div class="right">
-                    <div class="address header-font">г.Бишкек ул.Манаса 7a</div>
+                    <div class="address header-font">{{ places.places }}</div>
                         </div>
                     </div>
                 </div>
@@ -38,10 +40,10 @@
                         <span></span>
                     </div>
                     <div class="link-wrap">
-                        <a href="{% url 'catalog' %}" class="link header-font">Продукция</a>
+                        <a href="{% url 'index' %}" class="link header-font">Продукция</a>
                         <div class="link-list">
-                            <a href="{% url 'product_inner' %}" class="link-list-item header-font">Стоматологическое инструменты</a>
-                            <a href="#!" class="link-list-item header-font">Стоматологическое оборудование</a>
+                            <a href="{% url 'catalog' %}" class="link-list-item header-font">Стоматологическое инструменты</a>
+                            <a href="{% url 'product_inner' %}" class="link-list-item header-font">Стоматологическое оборудование</a>
                             <a href="#!" class="link-list-item header-font">Скачать каталог</a>
                         </div>
                     </div>
@@ -85,7 +87,6 @@
                 <a href="#!" class="link">Политика конфиденциальности</a>
                 <a href="#!" class="link">Политика в отношении cookie-файлов</a>
                 <a href="#!" class="link">Контакты офисов</a>
-                <a href="#!" class="link">Вебинары</a>
                 <a href="#!" class="link">Технический портал</a>
             </div>
             <div>
@@ -94,9 +95,15 @@
             </div>
             <div>
                 <h4 class="title">Связаться с нами</h4>
-                <a href="mailto:hello@gmail.com" class="link con-link email">hello@gmail.com</a>
-                <a href="tel:+996 755 432 210" class="link con-link tel">+996 755 432 210</a>
-                <span class="link con-link map">Chyi 28/1</span>
+                {% for i in email %}
+                <a href="{{ i.email }}" class="link con-link email">{{ i.email }}</a>
+                {% endfor %}
+                {% for j in phones %}
+                <a href="{{ j.number }}" class="link con-link tel">{{ j.number }}</a>
+                {% endfor %}
+
+                <span class="link con-link map">{{ places.places }}</span>
+
             </div>
         </div>
     </div>

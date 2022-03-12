@@ -8,21 +8,22 @@
             <div class="left">
                 <div class="product-swiper swiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" style="background-image: url('../assets/img/png/sign-bg.png')"></div>
-                        <div class="swiper-slide" style="background-image: url('../assets/img/png/sign-bg.png')"></div>
-                        <div class="swiper-slide" style="background-image: url('../assets/img/png/sign-bg.png')"></div>
-                        <div class="swiper-slide" style="background-image: url('../assets/img/png/sign-bg.png')"></div>
-                        <div class="swiper-slide" style="background-image: url('../assets/img/png/sign-bg.png')"></div>
+                        {% for i in product_iner %}
+                        <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
+                        <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
+                        <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
+                        <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
+                        <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
                     </div>
                 </div>
                 <div class="swiper-thumb-wrap">
                     <div class="product-swiper-thumb swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" style="background-image: url('../assets/img/png/sign-bg.png')"></div>
-                            <div class="swiper-slide" style="background-image: url('../assets/img/png/sign-bg.png')"></div>
-                            <div class="swiper-slide" style="background-image: url('../assets/img/png/sign-bg.png')"></div>
-                            <div class="swiper-slide" style="background-image: url('../assets/img/png/sign-bg.png')"></div>
-                            <div class="swiper-slide" style="background-image: url('../assets/img/png/sign-bg.png')"></div>
+                            <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
+                            <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
+                            <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
+                            <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
+                            <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
                         </div>
                     </div>
                     <div class="swiper-button-next thumb-next"></div>
@@ -31,15 +32,15 @@
             </div>
             <div class="info">
                 <div class="bread-crumbs">
-                    <a href="#!" class="link">Главная /</a> <span class="cur-link">Стоматологические инструменты</span>
+                    <a href="{% url 'index' %}" class="link">Главная /</a> <span class="cur-link">Стоматологическое оборудование</span>
                 </div>
-                <h1 class="title">Стоматологические инструменты</h1>
-                <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam delectus earum
-                    eius et, nesciunt odio officia quo ratione voluptatum.
+                <h1 class="title">{{ i.title}}</h1>
+                <p class="text">{{ i.description }}
                 </p>
-                <a href="#!" class="link link-btn">Заказать</a>
+                <a href="https://www.instagram.com/accounts/login/?next=/instagram/" class="link link-btn">Заказать</a>
             </div>
         </div>
+        {% endfor %}
     </div>
 </div>
 
