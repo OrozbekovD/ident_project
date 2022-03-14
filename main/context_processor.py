@@ -6,7 +6,9 @@ def base(request):
     email = Email.objects.all()
 
     places = Place.objects.first()
+    social = Social.objects.all()
+    footer = Footer.objects.first()
 
     params = {'phones': phones, 'email': email,
-              'places': places}
+              'places': places, 'social': social, 'footer': footer}
     return params

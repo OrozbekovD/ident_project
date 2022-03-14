@@ -1,7 +1,7 @@
 
 from django.shortcuts import render
 
-from main.models import Slider, Contact, Banner, BannerSlider, News, ProductInner
+from main.models import Slider, Contact, Banner, BannerSlider, News, ProductInner, Info, SubInfo, LastBanner
 
 
 def index(request):
@@ -9,32 +9,37 @@ def index(request):
     banner = Banner.objects.first()
     bannersl = BannerSlider.objects.all()
     news = News.objects.all()
+    info = Info.objects.first()
+    subinfo = SubInfo.objects.filter(foreign_key=info)[:3]
+    lastbanner = LastBanner.objects.all()[:3]
 
-    context = {'sliders': sliders, 'banner': banner, 'bannersl': bannersl, 'news': news }
+    context = {'sliders': sliders, 'banner': banner, 'bannersl': bannersl,
+                            'news': news, 'info': info, 'subinfo': subinfo, 'lastbanner': lastbanner}
 
-    return render(request, 'index.html', context )
+    return render(request, 'pages/index.html', context)
 
 def about(request):
 
 
-    return render(request, 'about.html', locals())
+    return render(request, 'pages/about.html', locals())
 
 def service(request):
-    return render(request, 'service.html', locals())
+    return render(request, 'pages/service.html', locals())
 
 def contact(request):
     contacts = Contact.objects.all()
 
-    return render(request, 'contacts.html', locals())
+    return render(request, 'pages/contacts.html', locals())
 
 def catalog(request):
 
-    return render(request, 'catalog.html', locals())
+    return render(request, 'pages/catalog.html', locals())
 
 def product_inner(request):
     product_iner = ProductInner.objects.all()
 
-    return render(request, 'product-inner.html', locals())
+    return render(request, 'pages/product-inner.html', locals())
 
-def news(request):
-    return render(request, 'index.html')
+def news_detail(request):
+    news = News.objects.all()
+    return render(request, 'pages/news_detail.html', locals())

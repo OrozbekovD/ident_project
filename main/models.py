@@ -1,13 +1,13 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
-
+from main.validators import validate_file_extension
 
 
 class Slider(models.Model):
 
     title = models.CharField(max_length=255, verbose_name='Название')
-    image = models.ImageField(upload_to='media/slider', verbose_name='Фото')
+    image = models.ImageField(upload_to='slider', verbose_name='Фото')
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
@@ -16,7 +16,7 @@ class Slider(models.Model):
 class Banner(models.Model):
 
     title = models.CharField(max_length=255, verbose_name='Название')
-    image = models.ImageField(upload_to='media/banner', verbose_name='Фото')
+    image = models.ImageField(upload_to='banner', verbose_name='Фото')
     description = models.TextField(verbose_name='Описание')
 
     def __str__(self):
@@ -24,7 +24,7 @@ class Banner(models.Model):
 
 class BannerSlider(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')
-    image = models.ImageField(upload_to='media/bannersslider', verbose_name='Фото')
+    image = models.ImageField(upload_to='bannersslider', verbose_name='Фото')
     description = models.TextField(verbose_name='Описание')
 
     def __str__(self):
@@ -34,18 +34,37 @@ class News(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=255, verbose_name='Название')
     description = models.TextField(verbose_name='Описание')
-    image = models.ImageField(upload_to='media/news', verbose_name='Фото', default='')
+    image = models.ImageField(upload_to='news', verbose_name='Фото', default='')
 
     def __str__(self):
         return self.title
 
+class Info(models.Model):
+    title = models.CharField(max_length=150, verbose_name='Название')
+    description = models.TextField(verbose_name='Описание')
+
+    def __str__(self):
+        return self.title
+
+class SubInfo(models.Model):
+    title = models.CharField(max_length=150, verbose_name='Название')
+    description = models.TextField(verbose_name='Описание')
+    image = models.ImageField(verbose_name='Фото', upload_to='subinfo')
+    foreign_key = models.ForeignKey(to=Info, on_delete=models.CASCADE, verbose_name='Тема', default='')
+
+    def __str__(self):
+        return self.title
+
+
+
 class Service(models.Model):
     pass
+
 
 class ProductInner(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')
     description = models.TextField(verbose_name='Описание')
-    image = models.ImageField(upload_to='media/productinner', verbose_name='Фото')
+    image = models.ImageField(upload_to='productinner', verbose_name='Фото')
 
     def __str__(self):
         return self.title
@@ -81,9 +100,33 @@ class Phones(models.Model):
 
     def __str__(self):
         return self.title
+
 class Place(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')
     places = models.CharField(max_length=255, verbose_name='Место')
 
     def __str__(self):
         return self.title
+
+class LastBanner(models.Model):
+    title = models.CharField(max_length=255, verbose_name='Название', blank=True, null='', default='')
+    description = models.TextField(verbose_name='Описание')
+    image = models.ImageField(upload_to='lastbanner', verbose_name='Фото')
+
+    def __str__(self):
+        return self.title
+
+class Social(models.Model):
+    title = models.CharField(verbose_name='Название', max_length=150)
+    logo = models.FileField(verbose_name='Лого', validators=[validate_file_extension], blank=True, default='')
+    url = models.URLField(verbose_name='Ссылка', blank=True)
+
+    def __str__(self):
+        return self.title
+
+class Footer(models.Model):
+    description = models.TextField(verbose_name='Описание')
+
+    def __str__(self):
+        return self.description
+

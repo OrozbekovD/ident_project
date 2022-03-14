@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="swiper intro-swiper">
+        <div class="swiper-wrapper">
+            {% for i in sliders %}
+                <div class="swiper-slide" style="background-image:url('{{ i.image.url }}')">
+                    <div class="container">
+                        <h2 class="intro-title">{{ i.title }}</h2>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="container intro-navigation">
+            <div class="swiper-pagination intro-pagination"></div>
+            <div class="intro-btns">
+                <div class="swiper-button-prev intro-btn intro-btn-prev"></div>
+                <div class="swiper-button-next intro-btn intro-btn-next"></div>
+            </div>
+        </div>
+    </div>
+
+    <section class="first-block">
+        <div class="decor"></div>
+        <div class="container">
+            <div class="inner">
+                <div><img src="{{ banner.image.url }}" alt=""></div>
+                <div class="right">
+                    <h3 class="title">"{{ banner.title }}"</h3>
+                    <p class="description">
+                        {{ banner.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="swiper swiper2">
+        <div class="swiper-wrapper">
+            {% for i in bannersl %}
+                <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')">
+                <div class="container">
+                    <div class="inner">
+                        <h3 class="title">{{ i.title }}</h3>
+                        <p class="desc">{{ i.description }}</p>
+                        <a href="{% url 'product_inner' %}" class="link">Подробнее</a>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+        <div class="swiper-button-prev swiper2-btn swiper2-prev"></div>
+        <div class="swiper-button-next swiper2-btn swiper2-next"></div>
+    </div>
+
+    <section class="news">
+        <div class="container">
+            <h2 class="title">Новости</h2>
+            <div class="news-grid">
+                {% for i in news %}
+                    <div class="news-item">
+                        <img src="{{ i.image.url }}" alt="">
+                        <div class="info">
+                            <time class="date">{{ i.date }}</time>
+                            <h3 class="title">{{ i.title }}</h3>
+                            <p class="desc">{{ i.description }}</p>
+                        </div>
+                        <a href="{% url 'news_detail' %}" class="link"></a>
+                    </div>
+                {% endfor %}
+            </div>
+            {#                <div class="news-item">#}
+            {#                    <img src="../../assets/img/png/reg-bg.png" alt="">#}
+            {#                    <div class="info">#}
+            {#                        <time class="date">08.04.2021</time>#}
+            {#                        <h3 class="title">Lorem ipsum dolor sit amet, consectetur</h3>#}
+            {#                        <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, voluptate! Lorem#}
+            {#                            ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, voluptate!</p>#}
+            {#                    </div>#}
+            {#                    <a href="#!" class="link"></a>#}
+            {#                </div>#}
+            {#            </div>#}
+            <div class="news-footer">
+                <div class="foot-item">
+                    <div class="icon flag"></div>
+                    <div class="right">
+                        <h4 class="title">Официальные диллеры</h4>
+                        <span class="link-btn">Далее</span>
+                    </div>
+                    <a href="#!" class="link"></a>
+                </div>
+                <div class="foot-item">
+                    <div class="icon tel"></div>
+                    <div class="right">
+                        <h4 class="title">Контакты отдела продаж</h4>
+                        <span class="link-btn">Далее</span>
+                    </div>
+                    <a href="{% url 'contacts' %}" class="link"></a>
+                </div>
+                <div class="foot-item">
+                    <div class="icon settings"></div>
+                    <div class="right">
+                        <h4 class="title">Сервисная служба</h4>
+                        <span class="link-btn">Далее</span>
+                    </div>
+                    <a href="{% url 'service' %}" class="link"></a>
+                </div>
+                <div class="foot-item">
+                    <div class="icon heart"></div>
+                    <div class="right">
+                        <h4 class="title">Немного о компании</h4>
+                        <span class="link-btn">Далее</span>
+                    </div>
+                    <a href="{% url 'about' %}" class="link"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dark-box">
+        <div class="container">
+            <div class="dark-head">
+{#                {% for i in info %}#}
+                    <h2 class="title">{{ info.title }}</h2>
+                    <p class="desc">{{ info.description }}</p>
+                    </div>
+{#                {% endfor %}#}
+            <div class="dark-grid">
+                {% for i in subinfo %}
+                    <div class="dark-item" style="background-image: url('{{ i.image.url }}')">
+                        <h3 class="title">{{ i.title }}</h3>
+                        <p class="desc">{{ i.description }}</p>
+                        <a href="" class="link"></a>
+                    </div>
+                {% endfor %}
+                {#                {% for i in subinfo %}#}
+                {#                    <div class="dark-item" style="background-image: url('{{ i.image.url }}')">#}
+                {#                    <h3 class="title">{{ i.title }}</h3>#}
+                {#                    <p class="desc">{{ i.description }}</p>#}
+                {#                    <a href="#!" class="link"></a>#}
+                {#                {% endfor %}#}
+                {#                </div>#}
+                {#                <div class="dark-item" style="background-image: url('../../assets/img/png/reg-bg.png')">#}
+                {#                    <h3 class="title">О компании</h3>#}
+                {#                    <p class="desc">Мы продаем лучшее оборудование для лучших специалистов </p>#}
+                {#                    <a href="#!" class="link"></a>#}
+                {#                </div>#}
+            </div>
+        </div>
+    </section>
+
+    <section class="advantage">
+        <div class="container">
+            <div class="advantage-grid">
+                {% for i in lastbanner %}
+                <div class="advantage-item">
+                    <div class="info">
+                        <h3 class="title">{{ i.title }}</h3>
+                        <p class="desc">{{ i.description }}</p>
+                    </div>
+                    <div class="img-wrap">
+                        <img src="{{ i.image.url }}" alt="">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

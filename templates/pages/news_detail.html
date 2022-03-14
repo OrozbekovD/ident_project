@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <section class="news">
+        <div class="container">
+            <div class="inner">
+                <div class="bread-crumbs">
+                    <a href="{% url 'index' %}" class="link">Главная /</a> <span class="cur-link">Новости</span>
+                </div>
+                {% for i in news %}
+                    <div class="img"><img src="{{ i.image.url }}" alt=""></div>
+                    <h1 class="title">{{ i.title }}</h1>
+                    <p class="text">{{ i.description }}</p>
+
+                    </div>
+                {% endfor %}
+
+
+        </div>
+
+    </section>
+{% endblock %}

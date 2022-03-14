@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
-from main.views import index, about, service, contact, catalog, product_inner, news
+from main.views import index, about, service, contact, catalog, product_inner, news_detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +29,6 @@ urlpatterns = [
     path('contacts/', contact, name='contacts'),
     path('catalog/', catalog, name='catalog'),
     path('product-inner/', product_inner, name='product_inner'),
-    path('news/', news, name='news')
+    path('news/', news_detail, name='news_detail')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

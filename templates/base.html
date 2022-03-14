@@ -17,18 +17,18 @@
             <div class="inner">
                 <div class="tels">
                     {% for i in phones %}
-                    <a href="tel:+996 999 594 321" class="tel header-font">{{ i.number }}</a>
-{#                    <a href="tel:+996 999 594 321," class="tel header-font">+996 999 594 321,</a>#}
-{#                    <a href="tel:+996 999 594 321," class="tel header-font">+996 999 594 321,</a>#}
+                        <a href="tel:{{ i.number }}" class="tel header-font">{{ i.number }}</a>
+                        {#                    <a href="tel:+996 999 594 321," class="tel header-font">+996 999 594 321,</a>#}
+                        {#                    <a href="tel:+996 999 594 321," class="tel header-font">+996 999 594 321,</a>#}
                     {% endfor %}
                 </div>
                 <div class="right">
                     <div class="address header-font">{{ places.places }}</div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
     <div class="bottom">
         <div class="container">
@@ -42,15 +42,17 @@
                     <div class="link-wrap">
                         <a href="{% url 'index' %}" class="link header-font">Продукция</a>
                         <div class="link-list">
-                            <a href="{% url 'catalog' %}" class="link-list-item header-font">Стоматологическое инструменты</a>
-                            <a href="{% url 'product_inner' %}" class="link-list-item header-font">Стоматологическое оборудование</a>
+                            <a href="{% url 'catalog' %}" class="link-list-item header-font">Стоматологическое
+                                инструменты</a>
+                            <a href="{% url 'product_inner' %}" class="link-list-item header-font">Стоматологическое
+                                оборудование</a>
                             <a href="#!" class="link-list-item header-font">Скачать каталог</a>
                         </div>
                     </div>
                     <a href="{% url 'service' %}" class="link header-font">Сервис</a>
-                        <a href="{% url 'about' %}" class="link header-font">О компании</a>
+                    <a href="{% url 'about' %}" class="link header-font">О компании</a>
 
-                        <a href="{% url 'contacts' %}" class="link header-font">Контакты</a>
+                    <a href="{% url 'contacts' %}" class="link header-font">Контакты</a>
 
                 </nav>
                 <form class="search">
@@ -74,12 +76,11 @@
         <div class="inner">
             <div>
                 <img src="../assets/img/svg/footer-logo.svg" alt="" class="logo">
-                <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quidem?</p>
+                <p class="text">{{ footer.description }}</p>
                 <div class="socials">
-                    <a href="#!" class="soc-link"><img src="../assets/img/svg/vk.svg" alt="" class="soc-icon"></a>
-                    <a href="#!" class="soc-link"><img src="../assets/img/svg/fac.svg" alt="" class="soc-icon"></a>
-                    <a href="#!" class="soc-link"><img src="../assets/img/svg/youtube.svg" alt="" class="soc-icon"></a>
-                    <a href="#!" class="soc-link"><img src="../assets/img/svg/inst.svg" alt="" class="soc-icon"></a>
+                    {% for i in social %}
+                        <a href="{{ i.url }}" class="soc-link"><img src="{{ i.logo.url }}" alt="" class="soc-icon"></a>
+                    {% endfor %}
                 </div>
             </div>
             <div>
@@ -96,10 +97,10 @@
             <div>
                 <h4 class="title">Связаться с нами</h4>
                 {% for i in email %}
-                <a href="{{ i.email }}" class="link con-link email">{{ i.email }}</a>
+                    <a href="{{ i.email }}" class="link con-link email">{{ i.email }}</a>
                 {% endfor %}
                 {% for j in phones %}
-                <a href="{{ j.number }}" class="link con-link tel">{{ j.number }}</a>
+                    <a href="{{ j.number }}" class="link con-link tel">{{ j.number }}</a>
                 {% endfor %}
 
                 <span class="link con-link map">{{ places.places }}</span>

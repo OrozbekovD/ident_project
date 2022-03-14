@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from main.models import Slider, Contact, Banner, BannerSlider, News, ProductInner, Email, Phones, Place
+from main.models import *
+
 
 admin.site.register(Slider)
 admin.site.register(Contact)
@@ -11,3 +12,9 @@ admin.site.register(ProductInner)
 admin.site.register(Email)
 admin.site.register(Phones)
 admin.site.register(Place)
+admin.site.register(Info)
+admin.site.register(SubInfo)
+admin.site.register(LastBanner)
+admin.site.register(Social)
+admin.site.register(Footer)
+
