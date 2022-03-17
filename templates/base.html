@@ -44,7 +44,7 @@
                         <div class="link-list">
                             <a href="{% url 'catalog' %}" class="link-list-item header-font">Стоматологическое
                                 инструменты</a>
-                            <a href="{% url 'product_inner' %}" class="link-list-item header-font">Стоматологическое
+                            <a href="{% url 'catalog' %}" class="link-list-item header-font">Стоматологическое
                                 оборудование</a>
                             <a href="#!" class="link-list-item header-font">Скачать каталог</a>
                         </div>
@@ -97,10 +97,10 @@
             <div>
                 <h4 class="title">Связаться с нами</h4>
                 {% for i in email %}
-                    <a href="{{ i.email }}" class="link con-link email">{{ i.email }}</a>
+                    <a href="mailto:{{ i.email }}" class="link con-link email">{{ i.email }}</a>
                 {% endfor %}
                 {% for j in phones %}
-                    <a href="{{ j.number }}" class="link con-link tel">{{ j.number }}</a>
+                    <a href="tel:{{ j.number }}" class="link con-link tel">{{ j.number }}</a>
                 {% endfor %}
 
                 <span class="link con-link map">{{ places.places }}</span>

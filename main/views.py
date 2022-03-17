@@ -1,7 +1,8 @@
 
 from django.shortcuts import render
 
-from main.models import Slider, Contact, Banner, BannerSlider, News, ProductInner, Info, SubInfo, LastBanner
+from main.models import Slider, Contact, Banner, BannerSlider, News, ProductInner, Info, SubInfo, LastBanner, \
+    ContactWall, Service, About
 
 
 def index(request):
@@ -20,16 +21,25 @@ def index(request):
 
 def about(request):
 
+    abouts = About.objects.first()
 
-    return render(request, 'pages/about.html', locals())
+    context = {'abouts': abouts}
+    return render(request, 'pages/about.html', context)
 
 def service(request):
-    return render(request, 'pages/service.html', locals())
+    service = Service.objects.first()
+    contacts = Contact.objects.all()
+
+    context = {'service': service, 'contacts': contacts}
+    return render(request, 'pages/service.html', context)
 
 def contact(request):
     contacts = Contact.objects.all()
+    wall = ContactWall.objects.first()
 
-    return render(request, 'pages/contacts.html', locals())
+    context = {'contacts': contacts, 'wall': wall}
+
+    return render(request, 'pages/contacts.html', context)
 
 def catalog(request):
 
@@ -40,6 +50,7 @@ def product_inner(request):
 
     return render(request, 'pages/product-inner.html', locals())
 
-def news_detail(request):
-    news = News.objects.all()
-    return render(request, 'pages/news_detail.html', locals())
+def news_detail(request, pk):
+    new = News.objects.get(pk=pk)
+    context = {'new': new}
+    return render(request, 'pages/news_detail.html', context)

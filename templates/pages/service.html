@@ -15,17 +15,14 @@
 <section class="service">
     <div class="container">
         <div class="inner">
-            <div class="img"><img src="../../assets/img/png/sign-bg.png" alt=""></div>
+            <div class="img"><img src="{{ service.image.url }}" alt=""></div>
             <div class="info">
                 <div class="grid">
                     <div class="item">
-                        <h4 class="title">Сервисная служба</h4>
-                        <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, voluptatibus.</p>
+                        <h4 class="title">{{ service.title }}</h4>
+                        <p class="text">{{ service.description }}</p>
                     </div>
-                    <div class="item">
-                        <h4 class="title">Сервисная служба</h4>
-                        <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, voluptatibus.</p>
-                    </div>
+
                 </div>
                 <h4 class="con-title">Контакты</h4>
                 <div class="equipment-grid">

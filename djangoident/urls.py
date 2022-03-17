@@ -29,6 +29,6 @@ urlpatterns = [
     path('contacts/', contact, name='contacts'),
     path('catalog/', catalog, name='catalog'),
     path('product-inner/', product_inner, name='product_inner'),
-    path('news/', news_detail, name='news_detail')
+    path('news/<int:pk>', news_detail, name='news_detail')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

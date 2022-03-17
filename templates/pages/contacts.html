@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="catalog-intro contacts">
-        <img src="../../assets/img/png/reg-bg.png" alt="" class="background">
+        <img src="{{ wall.image.url }}" alt="" class="background">
         <div class="container">
             <div class="box">
                 <div class="inner">
@@ -18,7 +18,7 @@
         <div class="container">
             <div class="inner">
                 <div class="equipment-grid">
-                    <h3 class="eq-title">Диллерские центры</h3>
+                    <h3 class="eq-title">Дилерские центры</h3>
                     {% for i in contacts %}
                         {% if i.choices == 'DC' %}
                             <div class="eq-item">
@@ -31,7 +31,7 @@
                                         {#                                        <a href="tel:+996 774 102 811" class="con-link tel">+996 774 102 811</a>#}
                                     </div>
                                     <div>
-                                        <a href="mailto:Mail05@gmail.com"
+                                        <a href="mailto:{{ i.email }}"
                                            class="con-link icon email">{{ i.email }}</a>
                                         {#                                        <a href="#!" class="con-link icon flag">Sunrise.studio.pro@gmail.com</a>#}
                                     </div>
@@ -54,7 +54,7 @@
 {#                                        <a href="tel:+996 774 102 811" class="con-link tel">+996 774 102 811</a>#}
                                     </div>
                                     <div>
-                                        <a href="mailto:Mail05@gmail.com"
+                                        <a href="mailto:{{ i.email }}"
                                            class="con-link icon email">{{ i.email }}</a>
 {#                                        <a href="#!" class="con-link icon flag">Sunrise.studio.pro@gmail.com</a>#}
                                     </div>

@@ -6,25 +6,29 @@
     <div class="container">
         <div class="inner">
             <div class="bread-crumbs">
-                <a href="#!" class="link">Главная /</a> <span class="cur-link">О компании</span>
+                <a href="{% url 'index' %}" class="link">Главная /</a> <span class="cur-link">О компании</span>
             </div>
-            <h1 class="title">Немного о компании</h1>
-            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, doloribus!</p>
+            <h1 class="title">{{ abouts.title }}</h1>
+            <p class="text">{{ abouts.description }}</p>
             <div class="equipment-grid">
                 <div class="eq-item">
-                    <h4 class="title">iDent центр</h4>
+                    {% for i in contacts %}
+                        {% if i.choices == 'DC' %}
+                    <h4 class="title">{{ i.title }}</h4>
                     <div class="contacts">
-                        <span class="con-link icon map">121614, г. Москва, Осенний бульвар, д. 12, к. 10</span>
+                        <span class="con-link icon map">{{ i.address }}</span>
                         <div>
-                            <a href="tel:+996 774 102 811" class="con-link icon tel">+996 774 102 811,</a>
-                            <a href="tel:+996 774 102 811" class="con-link tel">+996 774 102 811</a>
+                            <a href="tel:{{ i.number }}" class="con-link icon tel">{{ i.number }}</a>
+{#                            <a href="tel:+996 774 102 811" class="con-link tel">+996 774 102 811</a>#}
                         </div>
                         <div>
-                            <a href="mailto:Mail05@gmail.com" class="con-link icon email">Mail05@gmail.com</a>
-                            <a href="#!" class="con-link icon flag">Sunrise.studio.pro@gmail.com</a>
+                            <a href="mailto:{{ i.email }}" class="con-link icon email">{{ i.email }}</a>
+{#                            <a href="#!" class="con-link icon flag">Sunrise.studio.pro@gmail.com</a>#}
                         </div>
                     </div>
                 </div>
+                {% endif %}
+                    {% endfor %}
                 <div class="eq-item">
                     <h4 class="title">iDent центр</h4>
                     <div class="contacts">
