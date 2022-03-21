@@ -1,6 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-
+from embed_video.fields import EmbedVideoField
 from main.validators import validate_file_extension
 
 
@@ -32,7 +32,7 @@ class BannerSlider(models.Model):
     def __str__(self):
         return self.title
 
-class News(models.Model):
+class New(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=255, verbose_name='Название')
     description = models.TextField(verbose_name='Описание')
@@ -60,14 +60,23 @@ class SubInfo(models.Model):
         return self.title
 
 
+class ServiceIntro(models.Model):
+    title = models.CharField(max_length=150, verbose_name='Название')
+    description = models.TextField(verbose_name='Описание')
+    image = models.ImageField(verbose_name='Фото', upload_to='serviceintro')
+
+    def __str__(self):
+        return self.title
 
 class Service(models.Model):
     title = models.CharField(max_length=150, verbose_name='Название', default='')
     description = models.TextField(verbose_name='Описание', default='')
-    image = models.ImageField(verbose_name='Фото', upload_to='serviceimage', default='', null='', blank=True)
 
     def __str__(self):
         return self.title
+
+class ServiceImage(models.Model):
+    image = models.ImageField(verbose_name='Фото', upload_to='serviceimage', default='', null=True, blank=True)
 
 
 class ProductInner(models.Model):
@@ -82,6 +91,7 @@ class ProductInner(models.Model):
 class About(models.Model):
     title = models.CharField(max_length=150, verbose_name='Название', default='')
     description = models.TextField(verbose_name='Описание', default='')
+    url = EmbedVideoField(verbose_name='Video', default='')
 
     def __str__(self):
         return self.title
@@ -114,7 +124,7 @@ class Email(models.Model):
     def __str__(self):
         return self.title
 
-class Phones(models.Model):
+class Phone(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')
     number = PhoneNumberField(unique=True, region='KG', verbose_name='Номер')
     is_active = models.BooleanField(default=True)
@@ -151,6 +161,9 @@ class Footer(models.Model):
 
     def __str__(self):
         return self.description
+
+
+
 
 
 

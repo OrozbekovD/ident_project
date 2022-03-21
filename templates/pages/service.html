@@ -2,11 +2,10 @@
 
 {% block content %}
 
-<div class="service-intro" style="background-image: url('../../assets/img/png/reg-bg.png')">
+<div class="service-intro" style="background-image: url('{{ service_intro.image.url }}')">
     <div class="container">
-        <h1 class="title">Сервисное обслуживание</h1>
-        <p class="text">На протяжении более 100 лет компания KaVo Dental является ведущим международным лидером
-            стоматологической отрасли,
+        <h1 class="title">{{ service_intro.title }}</h1>
+        <p class="text">{{ service_intro.description }}
         </p>
         <div class="button" id="call-modal">Нужна помощь</div>
     </div>
@@ -15,45 +14,59 @@
 <section class="service">
     <div class="container">
         <div class="inner">
-            <div class="img"><img src="{{ service.image.url }}" alt=""></div>
+            <div class="img"><img src="{{ service_image.image.url }}" alt=""></div>
             <div class="info">
+            {% for i in service %}
                 <div class="grid">
                     <div class="item">
-                        <h4 class="title">{{ service.title }}</h4>
-                        <p class="text">{{ service.description }}</p>
+                        <h4 class="title">{{ i.title }}</h4>
+                        <p class="text">{{ i.description }}</p>
                     </div>
-
                 </div>
+            {% endfor %}
                 <h4 class="con-title">Контакты</h4>
                 <div class="equipment-grid">
+                    {% for i in contacts %}
+                        {% if i.choices == 'DC' %}
                     <div class="eq-item">
-                        <h4 class="title">iDent центр</h4>
-                        <div class="contacts">
-                            <span class="con-link icon map">121614, г. Москва, Осенний бульвар, д. 12, к. 10</span>
-                            <div>
-                                <a href="tel:+996 774 102 811" class="con-link icon tel">+996 774 102 811,</a>
-                                <a href="tel:+996 774 102 811" class="con-link tel">+996 774 102 811</a>
+                                <img src="../../assets/img/svg/logo.svg" alt="" class="img">
+                                <h4 class="title">{{ i.title }}</h4>
+                                <div class="contacts">
+                                    <span class="con-link icon map">{{ i.address }}</span>
+                                    <div>
+                                        <a href="tel:{{ i.number }}" class="con-link icon tel">{{ i.number }}</a>
+                                        {#                                        <a href="tel:+996 774 102 811" class="con-link tel">+996 774 102 811</a>#}
+                                    </div>
+                                    <div>
+                                        <a href="mailto:{{ i.email }}"
+                                           class="con-link icon email">{{ i.email }}</a>
+                                        {#                                        <a href="#!" class="con-link icon flag">Sunrise.studio.pro@gmail.com</a>#}
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <a href="mailto:Mail05@gmail.com" class="con-link icon email">Mail05@gmail.com</a>
-                                <a href="#!" class="con-link icon flag">Sunrise.studio.pro@gmail.com</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% for i in contacts %}
+                        {% if i.choices == 'SC' %}
+                            <div class="eq-item">
+                                <img src="../../assets/img/svg/logo.svg" alt="" class="img">
+                                <h4 class="title">{{ i.title }}</h4>
+                                <div class="contacts">
+                                    <span class="con-link icon map">{{ i.address }}</span>
+                                    <div>
+                                        <a href="tel:{{ i.number }}" class="con-link icon tel">{{ i.number }}</a>
+{#                                        <a href="tel:+996 774 102 811" class="con-link tel">+996 774 102 811</a>#}
+                                    </div>
+                                    <div>
+                                        <a href="mailto:{{ i.email }}"
+                                           class="con-link icon email">{{ i.email }}</a>
+{#                                        <a href="#!" class="con-link icon flag">Sunrise.studio.pro@gmail.com</a>#}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="eq-item">
-                        <h4 class="title">iDent центр</h4>
-                        <div class="contacts">
-                            <span class="con-link icon map">121614, г. Москва, Осенний бульвар, д. 12, к. 10</span>
-                            <div>
-                                <a href="tel:+996 774 102 811" class="con-link icon tel">+996 774 102 811,</a>
-                                <a href="tel:+996 774 102 811" class="con-link tel">+996 774 102 811</a>
-                            </div>
-                            <div>
-                                <a href="mailto:Mail05@gmail.com" class="con-link icon email">Mail05@gmail.com</a>
-                                <a href="#!" class="con-link icon flag">Sunrise.studio.pro@gmail.com</a>
-                            </div>
-                        </div>
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>

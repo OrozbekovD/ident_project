@@ -2,7 +2,7 @@ from main.models import *
 
 def base(request):
 
-    phones = Phones.objects.all()
+    phones = Phone.objects.all()
     email = Email.objects.all()
 
     places = Place.objects.first()

@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
+from embed_video.admin import AdminVideoMixin
 
 from main.models import *
 
@@ -15,16 +16,19 @@ class ContactWalls(admin.ModelAdmin):
     readonly_fields = ('get_image',)
     save_on_top = True
 
+class AdminVideo(AdminVideoMixin, admin.ModelAdmin):
+    pass
+
 
 
 admin.site.register(Slider)
 admin.site.register(Contact)
 admin.site.register(Banner)
 admin.site.register(BannerSlider)
-admin.site.register(News)
+admin.site.register(New)
 admin.site.register(ProductInner)
 admin.site.register(Email)
-admin.site.register(Phones)
+admin.site.register(Phone)
 admin.site.register(Place)
 admin.site.register(Info)
 admin.site.register(SubInfo)
@@ -33,5 +37,9 @@ admin.site.register(Social)
 admin.site.register(Footer)
 admin.site.register(ContactWall, ContactWalls)
 admin.site.register(Service)
-admin.site.register(About)
+admin.site.register(ServiceIntro)
+admin.site.register(ServiceImage)
+admin.site.register(About, AdminVideo)
+
+
 
