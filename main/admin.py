@@ -19,14 +19,13 @@ class ContactWalls(admin.ModelAdmin):
 class AdminVideo(AdminVideoMixin, admin.ModelAdmin):
     pass
 
-
-
+admin.site.register(Catalog)
+admin.site.register(Hashtag)
 admin.site.register(Slider)
 admin.site.register(Contact)
 admin.site.register(Banner)
 admin.site.register(BannerSlider)
 admin.site.register(New)
-admin.site.register(ProductInner)
 admin.site.register(Email)
 admin.site.register(Phone)
 admin.site.register(Place)
@@ -40,6 +39,21 @@ admin.site.register(Service)
 admin.site.register(ServiceIntro)
 admin.site.register(ServiceImage)
 admin.site.register(About, AdminVideo)
+admin.site.register(ProductImage)
+admin.site.register(ProductWall)
+
+
+class ImageInline(admin.TabularInline):
+    model = ProductImage
+    extra = 1
+
+
+@admin.register(Product)
+class ProductImageAdmin(admin.ModelAdmin):
+    inlines = [
+        ImageInline,
+    ]
+
 
 
 

@@ -8,7 +8,7 @@ def base(request):
     places = Place.objects.first()
     social = Social.objects.all()
     footer = Footer.objects.first()
-
+    catalog = Catalog.objects.all()
     params = {'phones': phones, 'email': email,
-              'places': places, 'social': social, 'footer': footer}
+              'places': places, 'social': social, 'footer': footer, 'catalog': catalog}
     return params

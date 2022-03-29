@@ -2,119 +2,112 @@
 
 {% block content %}
 
-<div class="product">
-    <div class="container">
-        <div class="inner">
-            <div class="left">
-                <div class="product-swiper swiper">
-                    <div class="swiper-wrapper">
-                        {% for i in product_iner %}
-                        <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
-                        <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
-                        <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
-                        <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
-                        <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
-                    </div>
-                </div>
-                <div class="swiper-thumb-wrap">
-                    <div class="product-swiper-thumb swiper">
+    <div class="product">
+        <div class="container">
+            <div class="inner">
+                <div class="left">
+                    <div class="product-swiper swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
-                            <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
-                            <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
-                            <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
-                            <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
+                            {% for i in product.productimage_set.all %}
+                                <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
+                            {% endfor %}
                         </div>
                     </div>
-                    <div class="swiper-button-next thumb-next"></div>
-                    <div class="swiper-button-prev thumb-prev"></div>
+                    <div class="swiper-thumb-wrap">
+                        <div class="product-swiper-thumb swiper">
+                            <div class="swiper-wrapper">
+                                {% for i in product.productimage_set.all %}
+                                    <div class="swiper-slide" style="background-image: url('{{ i.image.url }}')"></div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="swiper-button-next thumb-next"></div>
+                        <div class="swiper-button-prev thumb-prev"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="info">
-                <div class="bread-crumbs">
-                    <a href="{% url 'index' %}" class="link">Главная /</a> <span class="cur-link">Стоматологическое оборудование</span>
+                <div class="info">
+                    <div class="bread-crumbs">
+                        <a href="{% url 'index' %}" class="link">Главная /</a>
+                        <span class="cur-link">{{ catalogs.title }}</span>
+                    </div>
+                    <h1 class="title">{{ product.title }}</h1>
+                    <p class="text">{{ product.description }}</p>
+                    <a href="https://www.instagram.com/accounts/login/?next=/instagram/"
+                       class="link link-btn">Заказать</a>
                 </div>
-                <h1 class="title">{{ i.title }}</h1>
-                <p class="text">{{ i.description }}
-                </p>
-                <a href="https://www.instagram.com/accounts/login/?next=/instagram/" class="link link-btn">Заказать</a>
             </div>
         </div>
-        {% endfor %}
     </div>
-</div>
 
-<section class="similar">
-    <div class="container">
-        <h2 class="title">Похожие товары</h2>
-        <div class="catalog-grid">
-            <div class="catalog-item">
-                <div class="img">
-                    <img src="../../assets/img/png/reg-bg.png" alt="">
+    <section class="similar">
+        <div class="container">
+            <h2 class="title">Похожие товары</h2>
+            <div class="catalog-grid">
+                <div class="catalog-item">
+                    <div class="img">
+                        <img src="../../assets/img/png/reg-bg.png" alt="">
+                    </div>
+                    <div class="info">
+                        <h3 class="title">DIAGNOcam</h3>
+                        <p class="text">Lorem ipsum dolor sit amet.</p>
+                    </div>
                 </div>
-                <div class="info">
-                    <h3 class="title">DIAGNOcam</h3>
-                    <p class="text">Lorem ipsum dolor sit amet.</p>
+                <div class="catalog-item">
+                    <div class="img">
+                        <img src="../../assets/img/png/reg-bg.png" alt="">
+                    </div>
+                    <div class="info">
+                        <h3 class="title">DIAGNOcam</h3>
+                        <p class="text">Lorem ipsum dolor sit amet.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="catalog-item">
-                <div class="img">
-                    <img src="../../assets/img/png/reg-bg.png" alt="">
+                <div class="catalog-item">
+                    <div class="img">
+                        <img src="../../assets/img/png/reg-bg.png" alt="">
+                    </div>
+                    <div class="info">
+                        <h3 class="title">DIAGNOcam</h3>
+                        <p class="text">Lorem ipsum dolor sit amet.</p>
+                    </div>
                 </div>
-                <div class="info">
-                    <h3 class="title">DIAGNOcam</h3>
-                    <p class="text">Lorem ipsum dolor sit amet.</p>
-                </div>
-            </div>
-            <div class="catalog-item">
-                <div class="img">
-                    <img src="../../assets/img/png/reg-bg.png" alt="">
-                </div>
-                <div class="info">
-                    <h3 class="title">DIAGNOcam</h3>
-                    <p class="text">Lorem ipsum dolor sit amet.</p>
-                </div>
-            </div>
-            <div class="catalog-item">
-                <div class="img">
-                    <img src="../../assets/img/png/reg-bg.png" alt="">
-                </div>
-                <div class="info">
-                    <h3 class="title">DIAGNOcam</h3>
-                    <p class="text">Lorem ipsum dolor sit amet.</p>
+                <div class="catalog-item">
+                    <div class="img">
+                        <img src="../../assets/img/png/reg-bg.png" alt="">
+                    </div>
+                    <div class="info">
+                        <h3 class="title">DIAGNOcam</h3>
+                        <p class="text">Lorem ipsum dolor sit amet.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/swiper.js"></script>
+    <script>
+        var swiper = new Swiper(".product-swiper-thumb", {
+            spaceBetween: 15,
+            slidesPerView: 4,
+            navigation: {
+                nextEl: ".thumb-next",
+                prevEl: ".thumb-prev",
+            },
+            breakpoints: {
+                320: {
+                    spaceBetween: 8,
+                    slidesPerView: 3,
+                },
+                426: {
+                    spaceBetween: 15,
+                    slidesPerView: 4,
+                }
+            }
+        });
+        var swiper2 = new Swiper(".product-swiper", {
+            spaceBetween: 10,
+            thumbs: {swiper}
+        });
+    </script>
 {% endblock %}
-{##}
-{##}
-{#<script src="../assets/js/script.js"></script>#}
-{#<script src="../assets/js/swiper.js"></script>#}
-{#<script>#}
-{#    var swiper = new Swiper(".product-swiper-thumb", {#}
-{#        spaceBetween: 15,#}
-{#        slidesPerView: 4,#}
-{#        navigation: {#}
-{#            nextEl: ".thumb-next",#}
-{#            prevEl: ".thumb-prev",#}
-{#        },#}
-{#        breakpoints: {#}
-{#            320: {#}
-{#                spaceBetween: 8,#}
-{#                slidesPerView: 3,#}
-{#            },#}
-{#            426: {#}
-{#                spaceBetween: 15,#}
-{#                slidesPerView: 4,#}
-{#            }#}
-{#        }#}
-{#    });#}
-{#    var swiper2 = new Swiper(".product-swiper", {#}
-{#        spaceBetween: 10,#}
-{#        thumbs: {swiper}#}
-{#    });#}
-{#</script>#}
-{#</body>#}
-{#</html>#}
+
+

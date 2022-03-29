@@ -44,7 +44,7 @@
                     <div class="inner">
                         <h3 class="title">{{ i.title }}</h3>
                         <p class="desc">{{ i.description }}</p>
-                        <a href="{% url 'product_inner' %}" class="link">Подробнее</a>
+                        <a href="" class="link">Подробнее</a>
                     </div>
                 </div>
             {% endfor %}
@@ -64,7 +64,7 @@
                         <div class="info">
                             <time class="date">{{ i.date }}</time>
                             <h3 class="title">{{ i.title }}</h3>
-                            <p class="desc">{{ i.description }}</p>
+                            <p class="desc">{{ i.description | truncatewords:8 }}</p>
                         </div>
                         <a href="{% url 'news_detail' pk=i.id %}" class="link"></a>
                     </div>

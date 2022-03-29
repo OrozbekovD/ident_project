@@ -1,9 +1,17 @@
 asgiref==3.5.0
 backports.zoneinfo==0.2.1
 banner==0.0.2
+certifi==2021.10.8
+charset-normalizer==2.0.12
 Django==4.0.3
+django-embed-video==1.4.2
+django-js-asset==2.0.0
 django-phonenumber-field==6.1.0
+idna==3.3
+news==1.0
 phonenumbers==8.12.44
 Pillow==9.0.1
+requests==2.27.1
 sqlparse==0.4.2
 tzdata==2021.5
+urllib3==1.26.9

@@ -42,11 +42,9 @@
                     <div class="link-wrap">
                         <a href="{% url 'index' %}" class="link header-font">Продукция</a>
                         <div class="link-list">
-                            <a href="{% url 'catalog' %}" class="link-list-item header-font">Стоматологическое
-                                инструменты</a>
-                            <a href="{% url 'catalog' %}" class="link-list-item header-font">Стоматологическое
-                                оборудование</a>
-                            <a href="#!" class="link-list-item header-font">Скачать каталог</a>
+                            {% for i in catalog %}
+                            <a href="{% url 'catalog' pk=i.id %}" class="link-list-item header-font">{{ i.title }}</a>
+                            {% endfor %}
                         </div>
                     </div>
                     <a href="{% url 'service' %}" class="link header-font">Сервис</a>
@@ -55,8 +53,8 @@
                     <a href="{% url 'contacts' %}" class="link header-font">Контакты</a>
 
                 </nav>
-                <form class="search">
-                    <input type="text" class="search-field header-font" placeholder="Искать">
+                <form class="search" action="{% url 'news' %}">
+                    <input type="text" class="search-field header-font" placeholder="Искать" name="search">
                 </form>
                 <div class="burger">
                     <span></span>
